@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vender · Martegani Bienes Raíces</title>
 <meta name="description" content="Vendé tu propiedad con estrategia en Corrientes y Resistencia. Analizamos el mercado y acompañamos la comercialización de principio a fin.">
-<link rel="icon" type="image/svg+xml" href="img/logo.svg">
+<link rel="icon" type="image/jpeg" href="img/logo-martegani.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html" aria-label="Martegani Bienes Raíces — Inicio">
-      <img class="brand__logo" src="img/logo.svg" alt="Martegani Bienes Raíces">
+      <img class="brand__logo" src="img/logo-martegani.jpg" alt="Martegani Bienes Raíces">
       <span class="brand__text"><span>Corrientes</span><span>Resistencia</span></span>
     </a>
     <nav class="nav" id="nav">
@@ -31,16 +31,19 @@
   </div>
 </header>
 
-<!-- ===================== HERO (vender) ===================== -->
+<!-- ===================== HERO / APERTURA (general) ===================== -->
 <section class="hero">
-  <div class="wrap hero__grid">
-    <div class="hero__left">
+  <div class="hero__bg"><img src="img/hero-costanera.jpg" alt="Costanera de Corrientes" fetchpriority="high"></div>
+  <div class="hero__scrim"></div>
+  <div class="hero__caption"><span>Experiencia local · Atención personalizada</span>El próximo paso empieza con vos.</div>
+  <div class="wrap hero__inner">
+    <div class="hero__panel">
       <div class="hero__toggle">
         <a href="comprar.html">Quiero comprar</a>
         <a class="is-active" href="vender.html">Quiero vender</a>
       </div>
       <p class="eyebrow">Una estrategia para tu propiedad</p>
-      <h1 class="hero__title">El valor está<br>en <span class="wine">cómo</span><br><span class="wine">la vendemos.</span></h1>
+      <h1 class="hero__title">El valor está en <span class="wine">cómo la vendemos.</span></h1>
       <p class="hero__sub">Analizamos el mercado, cuidamos su presentación y acompañamos la comercialización de principio a fin.</p>
 
       <div class="stat">
@@ -52,19 +55,16 @@
         </div>
       </div>
 
-      <a class="btn btn--wine" href="#contacto" style="justify-content:space-between">Conversemos sobre tu propiedad <span class="ico">↗</span></a>
-      <a class="hero__secondary link-arrow arrow" href="#criterio" style="margin-top:22px">Conocé nuestra estrategia</a>
+      <a class="btn btn--wine" href="#contacto" style="width:100%;justify-content:space-between">Conversemos sobre tu propiedad <span class="ico">↗</span></a>
+      <a class="hero__secondary arrow" href="#criterio" style="margin-top:22px">Conocé nuestra estrategia</a>
       <p class="hero__meta"><b>+15 años</b> en Corrientes &nbsp;·&nbsp; En Resistencia <b>desde 2022</b></p>
-    </div>
-    <div class="hero__media">
-      <img class="desk" src="img/hero-vender.jpg" alt="Cada propiedad merece una estrategia propia — Costanera 505">
-      <img class="mob" src="img/hero-vender-mob.jpg" alt="Cada propiedad merece una estrategia propia — Costanera 505">
     </div>
   </div>
 </section>
 
+<main>
 <!-- ===================== PROPIEDADES ===================== -->
-<section class="section" id="propiedades">
+<section class="section reveal reveal--overlap" id="propiedades">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -88,32 +88,21 @@
 
     <div class="cards">
       <article class="card" data-city="corrientes">
-        <div class="card__media">
-          <img src="img/prop-1.jpg" alt="Departamento con vista al Paraná">
-          <a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a>
-        </div>
+        <div class="card__media"><img src="img/prop-1.jpg" alt="Departamento con vista al Paraná"><a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a></div>
         <p class="card__label">Corrientes · Departamento</p>
         <h3 class="card__title">Vivir frente al Paraná</h3>
         <p class="card__specs">193 m² · 3 dormitorios · 1 cochera</p>
         <div class="card__foot"><span>Consultar valor</span><a href="#contacto" class="link-arrow arrow" aria-label="Consultar"></a></div>
       </article>
-
       <article class="card" data-city="resistencia">
-        <div class="card__media">
-          <img src="img/prop-2.jpg" alt="Departamento en el centro de Resistencia">
-          <a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a>
-        </div>
+        <div class="card__media"><img src="img/prop-2.jpg" alt="Departamento en el centro de Resistencia"><a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a></div>
         <p class="card__label">Resistencia · Departamento</p>
         <h3 class="card__title">Espacio para vivir en el centro</h3>
         <p class="card__specs">156 m² · 3 dormitorios · 1 cochera</p>
         <div class="card__foot"><span>USD 320.000</span><a href="#contacto" class="link-arrow arrow" aria-label="Consultar"></a></div>
       </article>
-
       <article class="card" data-city="resistencia">
-        <div class="card__media">
-          <img src="img/prop-3.jpg" alt="Lote — levantamiento territorial">
-          <a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a>
-        </div>
+        <div class="card__media"><img src="img/prop-3.jpg" alt="Lote — levantamiento territorial"><a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a></div>
         <p class="card__label">Resistencia · Lote</p>
         <h3 class="card__title">Un lote para lo que proyectás</h3>
         <p class="card__specs">565 m² · 11,30 m de frente · 50 m de fondo</p>
@@ -124,29 +113,38 @@
   </div>
 </section>
 
-<!-- ===================== CRITERIO ===================== -->
-<section class="section" id="criterio">
+<!-- ===================== CRITERIO / MÉTODO ===================== -->
+<section class="section reveal reveal--overlap reveal--alt" id="criterio" data-motion="method">
   <div class="wrap criterio criterio__grid">
     <div>
       <p class="eyebrow">El criterio Martegani</p>
       <h2 class="h-xl">Una venta empieza<br>mucho antes<br>de <span class="wine">publicar.</span></h2>
       <div class="steps">
-        <button class="step is-active"><span class="step__n">01</span><span class="step__t">Leer el mercado</span><span class="diag"></span></button>
-        <button class="step"><span class="step__n">02</span><span class="step__t">Presentar con intención</span><span class="diag"></span></button>
-        <button class="step"><span class="step__n">03</span><span class="step__t">Acompañar la operación</span><span class="diag"></span></button>
+        <button class="step is-active"
+          data-text="Conocemos la propiedad y el objetivo. Analizamos su contexto, el valor de mercado y sus posibilidades reales para definir una estrategia comercial."
+          data-img="img/criterio-505.jpg" data-cap="Conocer una propiedad también es comprender su entorno.">
+          <span class="step__n">01</span><span class="step__t">Leer el mercado</span><span class="ic">↗</span></button>
+        <button class="step"
+          data-text="Cuidamos las imágenes, la descripción y la comunicación. Definimos cómo presentar la propiedad y dónde conectarla con potenciales compradores."
+          data-img="img/prop-1.jpg" data-cap="La presentación define cómo se percibe una propiedad.">
+          <span class="step__n">02</span><span class="step__t">Presentar con intención</span><span class="ic">↗</span></button>
+        <button class="step"
+          data-text="Acompañamos consultas, visitas y conversaciones. El seguimiento cercano permite evaluar lo que sucede y tomar decisiones durante la comercialización."
+          data-img="img/ciudad-corrientes.jpg" data-cap="El seguimiento cercano sostiene cada etapa de la operación.">
+          <span class="step__n">03</span><span class="step__t">Acompañar la operación</span><span class="ic">↗</span></button>
       </div>
-      <p class="lead">Conocemos la propiedad y el objetivo. Analizamos su contexto, el valor de mercado y sus posibilidades reales para definir una estrategia comercial.</p>
+      <p class="lead" data-step-text>Conocemos la propiedad y el objetivo. Analizamos su contexto, el valor de mercado y sus posibilidades reales para definir una estrategia comercial.</p>
       <p style="margin-top:26px"><a class="link-arrow arrow" href="#contacto">Hablemos de tu propiedad</a></p>
     </div>
     <figure class="criterio__media">
-      <div style="border-radius:var(--radius-lg);overflow:hidden"><img src="img/criterio-505.jpg" alt="Edificio de referencia · Costanera 505"></div>
-      <figcaption>Conocer una propiedad también es comprender su entorno.</figcaption>
+      <div style="border-radius:var(--radius-lg);overflow:hidden"><img src="img/criterio-505.jpg" alt="Propiedad de referencia · Costanera 505" data-step-img></div>
+      <figcaption data-step-cap>Conocer una propiedad también es comprender su entorno.</figcaption>
     </figure>
   </div>
 </section>
 
-<!-- ===================== DEL CRITERIO AL RESULTADO (oscuro) ===================== -->
-<section class="section--tight">
+<!-- ===================== CASO DE VENTA (oscuro) ===================== -->
+<section class="section reveal reveal--overlap">
   <div class="wrap">
     <div class="dark">
       <div class="dark__top">
@@ -180,7 +178,7 @@
 </section>
 
 <!-- ===================== DOS CIUDADES ===================== -->
-<section class="section">
+<section class="section reveal reveal--overlap reveal--alt" id="territorio" data-motion="territory">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -191,14 +189,14 @@
     </div>
     <div class="cities">
       <div class="city">
-        <div class="city__media"><img src="img/ciudad-corrientes.jpg" alt="Corrientes"></div>
+        <div class="city__media"><img src="img/ciudad-corrientes.jpg" alt="Corrientes"><span class="city__name">Corrientes</span></div>
         <div class="city__foot">
           <p>Más de quince años de experiencia.<br>Centro, macrocentro y alrededores.</p>
           <a class="link-arrow diag" href="#contacto">Explorar</a>
         </div>
       </div>
       <div class="city">
-        <div class="city__media"><img src="img/ciudad-resistencia.jpg" alt="Resistencia"></div>
+        <div class="city__media"><img src="img/ciudad-resistencia.jpg" alt="Resistencia"><span class="city__name">Resistencia</span></div>
         <div class="city__foot">
           <p>Presencia desde 2022.<br>Propiedades urbanas, lotes y loteos.</p>
           <a class="link-arrow diag" href="#contacto">Explorar</a>
@@ -209,7 +207,7 @@
 </section>
 
 <!-- ===================== BOUTIQUE / EQUIPO ===================== -->
-<section class="section" id="nosotros">
+<section class="section reveal reveal--overlap" id="nosotros">
   <div class="wrap boutique">
     <div class="placeholder">
       <h3 class="h-lg">Personas reales.<br>Atención directa.</h3>
@@ -217,8 +215,8 @@
     </div>
     <div class="boutique__body">
       <p class="eyebrow">Una inmobiliaria boutique</p>
-      <h2 class="h-xl">Cerca de cada<br>persona.<br>Dentro de cada<br><span class="wine">decisión.</span></h2>
-      <div style="margin-top:28px">
+      <h2 class="h-xl">Cerca de cada persona.<br>Dentro de cada <span class="wine">decisión.</span></h2>
+      <div style="margin-top:26px">
         <p>Somos un equipo de cuatro personas que trabaja con propietarios, compradores y propiedades con atención personalizada y conocimiento del mercado local.</p>
         <p>La experiencia nos permite acompañar cada etapa con claridad: desde la primera conversación hasta la resolución de la operación.</p>
       </div>
@@ -228,7 +226,7 @@
 </section>
 
 <!-- ===================== TESTIMONIOS ===================== -->
-<section class="section">
+<section class="section reveal reveal--overlap reveal--alt" data-motion="testimonials">
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -258,7 +256,7 @@
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="section">
+<section class="section reveal reveal--overlap">
   <div class="wrap">
     <div class="faq__grid">
       <div>
@@ -269,109 +267,110 @@
       <div class="faq__list">
         <div class="faq__item">
           <button class="faq__q" aria-expanded="false"><span class="caret">▶</span> ¿Por dónde empezamos si quiero vender?</button>
-          <div class="faq__a"><p>Empezamos con una conversación y una visita para conocer la propiedad y tu objetivo. Con eso leemos el mercado y te proponemos una estrategia de comercialización antes de publicar.</p></div>
+          <div class="faq__a"><p>Por una conversación sobre tu propiedad y tu objetivo. A partir de allí, analizamos el contexto del mercado y las posibilidades de comercialización para definir el próximo paso.</p></div>
         </div>
         <div class="faq__item">
           <button class="faq__q" aria-expanded="false"><span class="caret">▶</span> ¿Qué significa el promedio de 90 días?</button>
-          <div class="faq__a"><p>Es el tiempo promedio de comercialización respaldado por operaciones registradas. El período y la muestra se precisan antes de publicar cada caso.</p></div>
+          <div class="faq__a"><p>Es una referencia histórica respaldada por operaciones registradas, no una garantía para cada propiedad. El plazo depende del inmueble, su precio y las condiciones del mercado.</p></div>
         </div>
         <div class="faq__item">
           <button class="faq__q" aria-expanded="false"><span class="caret">▶</span> ¿Puedo consultar directamente una propiedad?</button>
-          <div class="faq__a"><p>Sí. Podés escribirnos por la propiedad que te interesa y te acompañamos en cada paso, desde la primera consulta hasta el cierre.</p></div>
+          <div class="faq__a"><p>Sí. Cada ficha permite iniciar una consulta que identifica la propiedad que te interesa, para conversar sobre sus características y coordinar los siguientes pasos.</p></div>
         </div>
         <div class="faq__item">
           <button class="faq__q" aria-expanded="false"><span class="caret">▶</span> ¿Trabajan con lotes y loteos?</button>
-          <div class="faq__a"><p>Sí, trabajamos con lotes y loteos en Corrientes y Resistencia, además de departamentos y propiedades urbanas.</p></div>
+          <div class="faq__a"><p>Sí. Además de propiedades urbanas en Corrientes y Resistencia, Martegani comercializa lotes y loteos en sus alrededores.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<!-- ===================== CONTACTO / PRÓXIMO PASO ===================== -->
-<section class="section--tight" id="contacto">
-  <div class="wrap">
-    <div class="next" data-wa-scope>
-      <div class="next__top">
-        <div>
-          <p class="eyebrow">El próximo paso</p>
-          <h2 class="h-xl">Contanos qué<br><span class="wine">necesitás hacer.</span></h2>
-          <p class="lead" style="margin-top:20px">Una conversación puede ayudarte a ordenar tu búsqueda o el camino para vender tu propiedad.</p>
-        </div>
-        <div class="next__form">
-          <div class="search__row">
-            <div class="field">
-              <label for="quiero">Quiero</label>
-              <select id="quiero" name="quiero">
-                <option>Encontrar una propiedad</option>
-                <option>Vender una propiedad</option>
-                <option>Hacer una consulta</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="ciudad-wa">Ciudad</label>
-              <select id="ciudad-wa" name="ciudad-wa">
-                <option>Corrientes o Resistencia</option>
-                <option>Corrientes</option>
-                <option>Resistencia</option>
-              </select>
-            </div>
+<!-- ===================== CIERRE: contacto + sedes + footer ===================== -->
+<section class="closing" id="contacto">
+  <div class="closing__backdrop" aria-hidden="true"><img src="img/cierre-panoramica.jpg" alt="" width="1000" height="750"></div>
+  <div class="closing__seam" aria-hidden="true"></div>
+  <div class="closing__inner" data-wa-scope>
+
+    <div class="next__top">
+      <div>
+        <p class="eyebrow">El próximo paso</p>
+        <h2 class="h-xl">Contanos qué necesitás.</h2>
+        <p class="lead" style="margin-top:20px">Una conversación puede ayudarte a ordenar tu búsqueda o el camino para vender tu propiedad.</p>
+      </div>
+      <div class="next__form">
+        <div class="search__row">
+          <div class="field">
+            <label for="quiero">Quiero</label>
+            <div class="select"><select id="quiero" name="quiero">
+              <option>Encontrar una propiedad</option>
+              <option>Vender una propiedad</option>
+              <option>Hacer una consulta</option>
+            </select></div>
           </div>
-          <a class="btn btn--wine" data-whatsapp href="#" target="_blank" rel="noopener">
-            Escribir por WhatsApp
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.4-4.2A8.5 8.5 0 1 1 20 11.5Z" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="field">
+            <label for="ciudad-wa">Ciudad</label>
+            <div class="select"><select id="ciudad-wa" name="ciudad-wa">
+              <option>Corrientes o Resistencia</option>
+              <option>Corrientes</option>
+              <option>Resistencia</option>
+            </select></div>
+          </div>
+        </div>
+        <a class="btn btn--wine" data-whatsapp href="#" target="_blank" rel="noopener">
+          Escribir por WhatsApp
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.4-4.2A8.5 8.5 0 1 1 20 11.5Z" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p class="after"><a class="link-arrow arrow" href="#contacto">Prefiero dejar una consulta</a></p>
+      </div>
+    </div>
+
+    <div class="branches">
+      <div class="branch">
+        <h3>Corrientes</h3>
+        <address>Buenos Aires 1442<br>Piso 1 · Oficina 1</address>
+        <div class="branch__links">
+          <a href="https://maps.google.com/?q=Buenos+Aires+1442+Corrientes" target="_blank" rel="noopener">Cómo llegar
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
           </a>
-          <p class="after"><a class="link-arrow arrow" href="#contacto">Prefiero dejar una consulta</a></p>
+          <a class="diag" href="#contacto">Compartí tu experiencia</a>
         </div>
       </div>
-      <div class="sedes">
-        <div class="sede">
-          <h3>Corrientes</h3>
-          <address>Buenos Aires 1442<br>Piso 1 · Oficina 1</address>
-          <div class="sede__links">
-            <a href="https://maps.google.com/?q=Buenos+Aires+1442+Corrientes" target="_blank" rel="noopener">Cómo llegar
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            </a>
-            <a class="diag" href="#contacto">Compartí tu experiencia</a>
-          </div>
-        </div>
-        <div class="sede">
-          <h3>Resistencia</h3>
-          <address>Güemes 369<br>Planta alta</address>
-          <div class="sede__links">
-            <a href="https://maps.google.com/?q=Güemes+369+Resistencia" target="_blank" rel="noopener">Cómo llegar
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
-            </a>
-            <a class="diag" href="#contacto">Compartí tu experiencia</a>
-          </div>
+      <div class="branch">
+        <h3>Resistencia</h3>
+        <address>Güemes 369<br>Planta alta</address>
+        <div class="branch__links">
+          <a href="https://maps.google.com/?q=Güemes+369+Resistencia" target="_blank" rel="noopener">Cómo llegar
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+          <a class="diag" href="#contacto">Compartí tu experiencia</a>
         </div>
       </div>
     </div>
+
+    <div class="closing__footer">
+      <div class="footer__top">
+        <h2>Vender con estrategia.<br>Encontrar con confianza.</h2>
+        <a class="footer__cta diag" href="#contacto">Hablemos de tu próximo paso</a>
+      </div>
+      <div class="footer__grid">
+        <div class="footer__brand"><p>Martegani Bienes Raíces<br>Corrientes · Resistencia<br>Matrículas profesionales y datos legales por incorporar.</p></div>
+        <nav class="footer__nav">
+          <a href="comprar.html">Comprar</a>
+          <a href="vender.html">Vender</a>
+          <a href="#nosotros">Nosotros</a>
+        </nav>
+        <div class="footer__social">
+          <a href="#">Instagram Corrientes</a>
+          <a href="#">Instagram Resistencia</a>
+        </div>
+      </div>
+      <p class="footer__legal">Boceto de diseño · Fotografías y propiedades de referencia del catálogo Martegani. Formularios, consultas y enlaces de sedes se simulan; no se envía información. Caso de venta, equipo y reseñas requieren material del cliente.</p>
+    </div>
+
   </div>
 </section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="footer">
-  <div class="footer__top">
-    <h2>Vender con estrategia.<br>Encontrar con confianza.</h2>
-    <a class="footer__cta diag" href="#contacto">Hablemos de tu próximo paso</a>
-  </div>
-  <div class="footer__grid">
-    <div class="footer__brand">
-      <p>Martegani Bienes Raíces<br>Corrientes · Resistencia<br>Matrículas profesionales y datos legales por incorporar.</p>
-    </div>
-    <nav class="footer__nav">
-      <a href="comprar.html">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="#nosotros">Nosotros</a>
-    </nav>
-    <div class="footer__social">
-      <a href="#">Instagram Corrientes</a>
-      <a href="#">Instagram Resistencia</a>
-    </div>
-  </div>
-  <p class="footer__legal">Boceto de diseño · Fotografías y propiedades de referencia del catálogo Martegani. Formularios, consultas y enlaces de sedes se simulan; no se envía información. Caso de venta, equipo y reseñas requieren material del cliente.</p>
-</footer>
 
 <script src="js/main.js"></script>
 </body>
