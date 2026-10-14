@@ -137,11 +137,27 @@
      MOVIMIENTO — un único coordinador por scroll (rAF)
      ======================================================= */
   var heroBg = document.querySelector(".hero__bg");
+  var hero2 = document.querySelector(".hero");
   var reveals = [].slice.call(document.querySelectorAll(".reveal"));
   reveals.forEach(function (el, i) { el.style.zIndex = String(i + 1); });
   var closing = document.querySelector(".closing");
-  var horizontal = { method: 1, territory: 1, testimonials: 1 };
   var ticking = false;
+
+  /* Entrada de secciones: activa .in cuando el bloque entra en pantalla.
+     Mejora progresiva: sólo con JS, y el contenido nunca se oculta. */
+  if (!reducedQuery.matches) {
+    document.documentElement.classList.add("js-motion");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      reveals.forEach(function (el) { io.observe(el); });
+    } else {
+      reveals.forEach(function (el) { el.classList.add("in"); });
+    }
+  }
 
   function frame() {
     ticking = false;
@@ -151,27 +167,16 @@
 
     headerState();
 
-    // Parallax del hero (sólo escritorio y sin movimiento reducido)
+    // Parallax del hero: la foto se mueve más lento que el scroll (sólo escritorio).
     if (heroBg) {
+      var heroH = hero2 ? hero2.offsetHeight : vh;
+      var y = window.scrollY;
       if (reduced || mobile) {
         heroBg.style.transform = "";
-      } else {
-        var y = window.scrollY;
-        if (y < vh * 1.2) heroBg.style.transform = "translate3d(0," + (y * 0.18) + "px,0)";
+      } else if (y <= heroH) {
+        heroBg.style.transform = "translate3d(0," + (y * 0.28).toFixed(1) + "px,0)";
       }
     }
-
-    // Entradas de secciones (sólo traslación; el texto nunca se oculta)
-    reveals.forEach(function (el) {
-      if (reduced) { el.style.setProperty("--motion-x", "0px"); el.style.setProperty("--motion-y", "0px"); return; }
-      var r = el.getBoundingClientRect();
-      var prog = clamp((vh - r.top) / Math.min(vh * 0.68, Math.max(280, r.height * 0.8)));
-      var isH = !mobile && horizontal[el.dataset.motion];
-      var dist = mobile ? 20 : (isH ? 32 : 42);
-      var rem = (1 - easeOut(prog)) * dist;
-      el.style.setProperty("--motion-x", (isH ? rem : 0) + "px");
-      el.style.setProperty("--motion-y", (isH ? 0 : rem) + "px");
-    });
 
     // Cierre: formación blanco → cielo → ciudad → plano oscuro
     if (closing) {

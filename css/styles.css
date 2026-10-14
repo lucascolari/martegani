@@ -123,7 +123,7 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
    HERO / APERTURA (foto territorial a fondo completo + glass)
    ========================================================= */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:132px 0 70px;overflow:hidden}
-.hero__bg{position:absolute;inset:-8% 0;z-index:-2;will-change:transform}
+.hero__bg{position:absolute;inset:-30% 0;z-index:-2;will-change:transform}
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
 .hero__scrim{position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,rgba(17,20,18,.12) 0%,rgba(17,20,18,0) 32%,rgba(17,20,18,.28) 72%,rgba(17,20,18,.5) 100%),
@@ -182,10 +182,15 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 /* =========================================================
    MOVIMIENTO: entradas y superposición de secciones
    ========================================================= */
-.reveal{position:relative;background:var(--bg);transform:translate3d(var(--motion-x,0),var(--motion-y,0),0)}
+.reveal{position:relative;background:var(--bg)}
 .reveal--alt{background:var(--bg-alt)}
 .reveal--overlap{margin-top:-22px;border-radius:24px 6px 0 0;padding-top:92px;z-index:1}
 @media (max-width:980px){.reveal--overlap{margin-top:-12px;border-radius:18px 5px 0 0;padding-top:64px}}
+/* Entrada de secciones: desliza el contenido al entrar en pantalla.
+   Sólo se aplica con JS (.js-motion) y nunca oculta el texto (sin opacity 0). */
+.js-motion .reveal > .wrap{transform:translateY(50px);transition:transform .8s var(--ease)}
+.js-motion .reveal[data-motion] > .wrap{transform:translateX(50px)}
+.js-motion .reveal.in > .wrap{transform:none}
 
 /* =========================================================
    PROPIEDADES
@@ -419,7 +424,7 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{transform:none !important}
+  .js-motion .reveal > .wrap{transform:none !important;transition:none}
   .hero__bg{transform:none !important}
   .closing{--arrival-sky:1 !important;--arrival-photo:1 !important}
   .closing__backdrop img{transform:none !important;opacity:1 !important}
