@@ -100,11 +100,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);margin:0;line
 .nav__cta{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.45);color:#fff;padding:11px 18px;border-radius:12px;font-size:15px;transition:background .2s,border-color .2s}
 .nav__cta:hover{background:rgba(255,255,255,.12)}
 
-/* estado sólido (al bajar del hero) */
-.site-header.is-stuck{background:rgba(246,246,243,.92);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+/* estado sólido (al bajar del hero): barra "fumé" (gris ahumado) */
+.site-header.is-stuck{background:rgba(208,207,201,.9);backdrop-filter:saturate(1.1) blur(12px);border-bottom:1px solid rgba(34,34,34,.12)}
 .site-header.is-stuck::before{opacity:0}
 .site-header.is-stuck .brand__text{color:var(--ink)}
-.site-header.is-stuck .nav a{color:var(--ink-soft)}
+.site-header.is-stuck .nav a{color:#4c4d49}
 .site-header.is-stuck .nav a:hover{color:var(--ink)}
 .site-header.is-stuck .nav a.is-active{color:var(--wine)}
 .site-header.is-stuck .nav__cta{border-color:var(--line);color:var(--ink)}
