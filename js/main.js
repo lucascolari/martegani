@@ -74,7 +74,7 @@
 
   /* ----- Filtro de propiedades ----- */
   var chips = document.querySelectorAll(".filters .chip");
-  var cards = document.querySelectorAll(".cards .card");
+  var cards = document.querySelectorAll(".props-track .card[data-city]");
   function applyFilter(city) {
     cards.forEach(function (card) {
       var c = (card.getAttribute("data-city") || "").toLowerCase();
@@ -86,6 +86,7 @@
       chips.forEach(function (x) { x.classList.remove("is-active"); });
       chip.classList.add("is-active");
       applyFilter((chip.getAttribute("data-filter") || "todas").toLowerCase());
+      if (typeof relayout === "function") relayout();
     });
   });
 
@@ -111,6 +112,7 @@
         x.classList.toggle("is-active", (x.getAttribute("data-filter") || "").toLowerCase() === target);
       });
       applyFilter(target);
+      if (typeof relayout === "function") relayout();
       var sec = document.getElementById("propiedades");
       if (sec) sec.scrollIntoView({ behavior: "smooth" });
     });
@@ -141,7 +143,20 @@
   var reveals = [].slice.call(document.querySelectorAll(".reveal"));
   reveals.forEach(function (el, i) { el.style.zIndex = String(i + 1); });
   var closing = document.querySelector(".closing");
+  var pin = document.querySelector("[data-props-pin]");
+  var track = document.querySelector("[data-props-track]");
+  var progressBar = document.querySelector(".props-progress i");
   var ticking = false;
+
+  /* Define la altura del bloque pineado según cuánto debe desplazarse el carrusel. */
+  function layoutPin() {
+    if (!pin || !track) return;
+    var mobile = window.innerWidth <= 980;
+    if (mobile || reducedQuery.matches) { pin.style.height = ""; track.style.transform = ""; return; }
+    var travel = Math.max(0, track.scrollWidth - track.clientWidth);
+    pin.style.height = (window.innerHeight + travel) + "px";
+  }
+  function relayout() { layoutPin(); schedule(); }
 
   /* Entrada de secciones: activa .in cuando el bloque entra en pantalla.
      Mejora progresiva: sólo con JS, y el contenido nunca se oculta. */
@@ -178,6 +193,21 @@
       }
     }
 
+    // Carrusel pineado: el scroll vertical mueve las tarjetas de der→izq.
+    if (pin && track) {
+      if (reduced || mobile) {
+        track.style.transform = "";
+        if (progressBar) progressBar.parentNode.style.setProperty("--carousel-progress", 0);
+      } else {
+        var pr = pin.getBoundingClientRect();
+        var range = pin.offsetHeight - vh;
+        var prog = range > 0 ? clamp(-pr.top / range) : 0;
+        var travel = Math.max(0, track.scrollWidth - track.clientWidth);
+        track.style.transform = "translate3d(" + (-prog * travel).toFixed(1) + "px,0,0)";
+        if (progressBar) progressBar.parentNode.style.setProperty("--carousel-progress", prog.toFixed(3));
+      }
+    }
+
     // Cierre: formación blanco → cielo → ciudad → plano oscuro
     if (closing) {
       if (reduced) {
@@ -194,9 +224,10 @@
   function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
   window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", schedule);
-  reducedQuery.addEventListener("change", schedule);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
-  window.addEventListener("load", schedule);
+  window.addEventListener("resize", function () { layoutPin(); schedule(); });
+  reducedQuery.addEventListener("change", function () { layoutPin(); schedule(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layoutPin(); schedule(); });
+  window.addEventListener("load", function () { layoutPin(); schedule(); });
+  layoutPin();
   schedule();
 })();

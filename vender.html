@@ -63,30 +63,27 @@
 </section>
 
 <main>
-<!-- ===================== PROPIEDADES ===================== -->
-<section class="section reveal reveal--overlap" id="propiedades">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <p class="eyebrow">Propiedades seleccionadas</p>
-        <h2 class="h-xl">Encontrá tu<br><span class="wine">próximo lugar.</span></h2>
-      </div>
-      <div class="sec-head__intro">
-        Propiedades urbanas, lotes y oportunidades para distintas maneras de vivir e invertir.
-        <span class="note">Selección de referencia del catálogo actual.</span>
+<!-- ===================== PROPIEDADES (carrusel pineado) ===================== -->
+<section class="reveal props-pin" id="propiedades" data-props-pin>
+  <div class="props-sticky">
+    <div class="wrap">
+      <div class="props-head">
+        <div>
+          <p class="eyebrow">Propiedades seleccionadas</p>
+          <h2 class="h-xl">Encontrá tu <span class="wine">próximo lugar.</span></h2>
+        </div>
+        <div class="filters">
+          <button class="chip is-active" data-filter="todas">Todas</button>
+          <button class="chip" data-filter="corrientes">Corrientes</button>
+          <button class="chip" data-filter="resistencia">Resistencia</button>
+        </div>
       </div>
     </div>
 
-    <div class="props-top">
-      <div class="filters">
-        <button class="chip is-active" data-filter="todas">Todas</button>
-        <button class="chip" data-filter="corrientes">Corrientes</button>
-        <button class="chip" data-filter="resistencia">Resistencia</button>
-      </div>
-      <a class="see-all link-arrow arrow" href="#contacto">Ver toda la muestra</a>
-    </div>
+    <div class="props-progress" aria-hidden="true"><i></i></div>
 
-    <div class="cards">
+    <div class="props-viewport">
+    <div class="props-track" data-props-track>
       <article class="card" data-city="corrientes">
         <div class="card__media"><img src="img/prop-1.jpg" alt="Departamento con vista al Paraná"><a class="card__pin" href="#contacto" aria-label="Ver propiedad">↗</a></div>
         <p class="card__label">Corrientes · Departamento</p>
@@ -108,8 +105,18 @@
         <p class="card__specs">565 m² · 11,30 m de frente · 50 m de fondo</p>
         <div class="card__foot"><span>USD 45.000</span><a href="#contacto" class="link-arrow arrow" aria-label="Consultar"></a></div>
       </article>
+      <a class="pcard-cta" href="#contacto">
+        <h3>Ver toda<br>la muestra</h3>
+        <span>Contanos qué estás buscando y te mostramos las opciones que encajan.</span>
+        <span class="mark">↗</span>
+      </a>
     </div>
-    <p class="cards-note">3 propiedades en esta muestra de diseño.</p>
+    </div>
+
+    <p class="props-hint">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Seguí bajando para recorrer la selección · 3 propiedades en esta muestra de diseño.
+    </p>
   </div>
 </section>
 

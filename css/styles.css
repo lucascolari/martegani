@@ -31,7 +31,7 @@
 
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
 body{
   margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);
   font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip;
@@ -184,8 +184,11 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
    ========================================================= */
 .reveal{position:relative;background:var(--bg)}
 .reveal--alt{background:var(--bg-alt)}
-.reveal--overlap{margin-top:-22px;border-radius:24px 6px 0 0;padding-top:92px;z-index:1}
-@media (max-width:980px){.reveal--overlap{margin-top:-12px;border-radius:18px 5px 0 0;padding-top:64px}}
+/* Superposición: cada sección se apoya sobre la anterior (hojas apiladas). */
+.reveal--overlap{margin-top:-38px;border-radius:30px 8px 0 0;padding-top:104px;z-index:1;
+  box-shadow:0 -34px 60px -34px rgba(34,35,33,.26)}
+@media (max-width:980px){.reveal--overlap{margin-top:-20px;border-radius:20px 6px 0 0;padding-top:70px;
+  box-shadow:0 -22px 40px -26px rgba(34,35,33,.24)}}
 /* Entrada de secciones: desliza el contenido al entrar en pantalla.
    Sólo se aplica con JS (.js-motion) y nunca oculta el texto (sin opacity 0). */
 .js-motion .reveal > .wrap{transform:translateY(50px);transition:transform .8s var(--ease)}
@@ -217,6 +220,27 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .card__specs{color:var(--ink-soft);font-size:14px}
 .card__foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
 .cards-note{margin-top:26px;font-size:13px;color:var(--ink-soft)}
+
+/* ---- Carrusel pineado de propiedades (scroll der→izq, luego sigue) ---- */
+.props-pin{position:relative;margin-top:-38px;z-index:1}
+.props-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:24px;
+  background:var(--bg);border-radius:30px 8px 0 0;box-shadow:0 -34px 60px -34px rgba(34,35,33,.26);
+  padding:94px 0 40px}
+.reveal--alt .props-sticky{background:var(--bg-alt)}
+.props-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.props-progress{height:2px;background:var(--line);border-radius:2px;margin:0 var(--gutter);overflow:hidden}
+.props-progress i{display:block;height:100%;background:var(--wine);transform-origin:left;transform:scaleX(var(--carousel-progress,0))}
+.props-viewport{overflow:hidden}
+.props-track{display:flex;gap:26px;padding:0 var(--gutter);will-change:transform}
+.props-track .card{flex:0 0 clamp(320px,34vw,460px)}
+.props-track .card__media{aspect-ratio:3/2}
+.pcard-cta{flex:0 0 300px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+  background:var(--wine);color:#fff;border-radius:var(--radius-lg);padding:38px}
+.pcard-cta h3{color:#fff;font-size:28px}
+.pcard-cta span{color:rgba(255,255,255,.85);font-size:14px}
+.pcard-cta .mark{font-size:22px;margin-top:auto}
+.props-hint{display:flex;align-items:center;gap:10px;color:var(--ink-soft);font-size:13px;margin:26px var(--gutter) 0}
+.props-hint svg{flex:none}
 
 /* =========================================================
    CRITERIO / MÉTODO
@@ -415,6 +439,16 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
   .search--compact .search__row{grid-template-columns:1fr}
   .search--compact .field--extra{display:none}
   .search--compact .search__more{display:flex}
+
+  /* carrusel: en celular se desliza con el dedo (sin pin) */
+  .props-pin{margin-top:-20px}
+  .props-sticky{position:static;min-height:0;padding:70px 0 0;box-shadow:none;border-radius:20px 6px 0 0}
+  .props-track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none !important;
+    padding-bottom:12px;scroll-padding-left:22px;-webkit-overflow-scrolling:touch}
+  .props-track .card{flex:0 0 84%;scroll-snap-align:start}
+  .props-track .pcard-cta{flex:0 0 70%;max-height:none}
+  .props-head{flex-direction:column;align-items:flex-start;gap:6px}
+  .props-progress{display:none}
 }
 
 @media (max-width:560px){
@@ -429,4 +463,6 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
   .closing{--arrival-sky:1 !important;--arrival-photo:1 !important}
   .closing__backdrop img{transform:none !important;opacity:1 !important}
   .card__media img,.city__media img{transition:none}
+  .props-sticky{position:static;min-height:0;padding-top:0}
+  .props-track{transform:none !important;overflow-x:auto}
 }
