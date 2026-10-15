@@ -240,8 +240,6 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .pcard-cta h3{color:#fff;font-size:28px}
 .pcard-cta span{color:rgba(255,255,255,.85);font-size:14px}
 .pcard-cta .mark{font-size:22px;margin-top:auto}
-.props-hint{display:flex;align-items:center;gap:10px;color:var(--ink-soft);font-size:13px;margin-top:30px}
-.props-hint svg{flex:none}
 
 /* =========================================================
    CRITERIO / MÉTODO
