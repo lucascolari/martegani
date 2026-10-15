@@ -143,20 +143,11 @@
   var reveals = [].slice.call(document.querySelectorAll(".reveal"));
   reveals.forEach(function (el, i) { el.style.zIndex = String(i + 1); });
   var closing = document.querySelector(".closing");
-  var pin = document.querySelector("[data-props-pin]");
+  var propsSection = document.getElementById("propiedades");
   var track = document.querySelector("[data-props-track]");
-  var progressBar = document.querySelector(".props-progress i");
   var ticking = false;
 
-  /* Define la altura del bloque pineado según cuánto debe desplazarse el carrusel. */
-  function layoutPin() {
-    if (!pin || !track) return;
-    var mobile = window.innerWidth <= 980;
-    if (mobile || reducedQuery.matches) { pin.style.height = ""; track.style.transform = ""; return; }
-    var travel = Math.max(0, track.scrollWidth - track.clientWidth);
-    pin.style.height = (window.innerHeight + travel) + "px";
-  }
-  function relayout() { layoutPin(); schedule(); }
+  function relayout() { schedule(); }
 
   /* Entrada de secciones: activa .in cuando el bloque entra en pantalla.
      Mejora progresiva: sólo con JS, y el contenido nunca se oculta. */
@@ -193,18 +184,17 @@
       }
     }
 
-    // Carrusel pineado: el scroll vertical mueve las tarjetas de der→izq.
-    if (pin && track) {
+    // Carrusel: se desliza de der→izq a medida que la sección pasa por pantalla
+    // (sin frenar el scroll). En celular es swipe nativo.
+    if (propsSection && track) {
       if (reduced || mobile) {
         track.style.transform = "";
-        if (progressBar) progressBar.parentNode.style.setProperty("--carousel-progress", 0);
       } else {
-        var pr = pin.getBoundingClientRect();
-        var range = pin.offsetHeight - vh;
-        var prog = range > 0 ? clamp(-pr.top / range) : 0;
+        var r = propsSection.getBoundingClientRect();
+        // 0 cuando la sección entra por abajo, 1 cuando termina de salir por arriba
+        var prog = clamp((vh - r.top) / (vh + r.height));
         var travel = Math.max(0, track.scrollWidth - track.clientWidth);
         track.style.transform = "translate3d(" + (-prog * travel).toFixed(1) + "px,0,0)";
-        if (progressBar) progressBar.parentNode.style.setProperty("--carousel-progress", prog.toFixed(3));
       }
     }
 
@@ -224,10 +214,9 @@
   function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
   window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", function () { layoutPin(); schedule(); });
-  reducedQuery.addEventListener("change", function () { layoutPin(); schedule(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layoutPin(); schedule(); });
-  window.addEventListener("load", function () { layoutPin(); schedule(); });
-  layoutPin();
+  window.addEventListener("resize", schedule);
+  reducedQuery.addEventListener("change", schedule);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+  window.addEventListener("load", schedule);
   schedule();
 })();
