@@ -378,6 +378,7 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .next__top .lead{color:rgba(255,255,255,.86)}
 .next__form .search__row{margin-bottom:18px}
 .next__form .after{margin-top:16px;color:#fff}
+.next__form .after a{color:#fff}
 .next__form .btn--wine{width:100%}
 
 .branches{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:74px}
