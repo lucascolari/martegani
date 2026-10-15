@@ -17,7 +17,7 @@
   --sky:#dfeaf2;           /* cielo del cierre */
   --wine:#BD1924;          /* rojo de acción = rojo del logo */
   --wine-dark:#9C1520;     /* hover */
-  --wine-light:#E8818A;    /* énfasis sobre glass/oscuro */
+  --wine-light:#BD1924;    /* mismo rojo del logo (unificado) */
   --wine-tint:#F6E6E7;     /* fondo rojo tenue */
 
   --radius:16px;
@@ -79,7 +79,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);margin:0;line
 .btn--wine{background:var(--wine);color:#fff}
 .btn--wine:hover{background:var(--wine-dark)}
 .btn--soft{background:var(--bg-alt);color:var(--ink)}
-.btn--soft:hover{background:#e6e1d8}
+.btn--soft:hover{background:#e0e0da}
 .btn .ico{font-size:16px}
 
 /* =========================================================
@@ -263,7 +263,7 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .dark h2{color:#fff}
 .dark__top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:44px}
 .dark__intro{color:#c3c3bd;font-size:16px;max-width:34ch;justify-self:end}
-.dark__intro .note{color:#E8818A;display:block;margin-top:10px}
+.dark__intro .note{color:var(--wine);display:block;margin-top:10px}
 .dark__body{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .sold{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:34px}
 .sold h3{color:#fff;font-size:28px;margin-bottom:10px}
@@ -436,12 +436,10 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
   .search--compact .field--extra{display:none}
   .search--compact .search__more{display:flex}
 
-  /* carrusel: en celular se desliza con el dedo */
-  .props-viewport{overflow:visible}
-  .props-track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none !important;
-    padding-bottom:12px;scroll-padding-left:22px;-webkit-overflow-scrolling:touch}
-  .props-track .card{flex:0 0 84%;scroll-snap-align:start}
-  .props-track .pcard-cta{flex:0 0 70%}
+  /* carrusel: en celular también se desliza solo con el scroll */
+  .props-viewport{overflow:hidden}
+  .props-track .card{flex:0 0 80%}
+  .props-track .pcard-cta{flex:0 0 66%}
   .props-head{flex-direction:column;align-items:flex-start;gap:6px}
 }
 

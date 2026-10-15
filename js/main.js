@@ -184,10 +184,11 @@
       }
     }
 
-    // Carrusel: se desliza de der→izq a medida que la sección pasa por pantalla
-    // (sin frenar el scroll). En celular es swipe nativo.
+    // Carrusel: se desliza solo de der→izq a medida que la sección pasa por
+    // pantalla (sin frenar el scroll). En compu y en celular. Sólo se desactiva
+    // con "movimiento reducido".
     if (propsSection && track) {
-      if (reduced || mobile) {
+      if (reduced) {
         track.style.transform = "";
       } else {
         var r = propsSection.getBoundingClientRect();
