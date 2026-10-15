@@ -223,10 +223,16 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
 .card__foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
 .cards-note{margin-top:26px;font-size:13px;color:var(--ink-soft)}
 
-/* ---- Carrusel que se desliza con el scroll (sin frenar la página) ---- */
+/* ---- Carrusel automático: corre solo en bucle continuo ---- */
 .props-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:34px}
-.props-viewport{overflow:hidden}
-.props-track{display:flex;gap:26px;padding:0 var(--gutter);will-change:transform}
+.props-viewport{overflow:hidden;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.props-track{display:flex;padding:0;will-change:transform}
+.props-track > *{margin-right:26px;flex:none}
+.props-track.is-marquee{width:max-content;animation-name:marquee;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@media (hover:hover){.props-track.is-marquee:hover{animation-play-state:paused}}
 .props-track .card{flex:0 0 clamp(320px,34vw,460px)}
 .props-track .card__media{aspect-ratio:3/2}
 .pcard-cta{flex:0 0 300px;display:flex;flex-direction:column;justify-content:center;gap:14px;
@@ -436,10 +442,10 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
   .search--compact .field--extra{display:none}
   .search--compact .search__more{display:flex}
 
-  /* carrusel: en celular también se desliza solo con el scroll */
+  /* carrusel: en celular también corre solo (ancho en vw, no %, por el max-content) */
   .props-viewport{overflow:hidden}
-  .props-track .card{flex:0 0 80%}
-  .props-track .pcard-cta{flex:0 0 66%}
+  .props-track .card{flex:0 0 80vw}
+  .props-track .pcard-cta{flex:0 0 66vw}
   .props-head{flex-direction:column;align-items:flex-start;gap:6px}
 }
 
@@ -455,6 +461,7 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
   .closing{--arrival-sky:1 !important;--arrival-photo:1 !important}
   .closing__backdrop img{transform:none !important;opacity:1 !important}
   .card__media img,.city__media img{transition:none}
-  .props-viewport{overflow:visible}
-  .props-track{transform:none !important;overflow-x:auto}
+  .props-viewport{overflow:auto;-webkit-mask:none;mask:none}
+  .props-track,.props-track.is-marquee{width:auto;animation:none !important;transform:none !important;
+    overflow-x:auto;padding-left:var(--gutter);scroll-padding-left:var(--gutter)}
 }

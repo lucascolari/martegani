@@ -143,11 +143,40 @@
   var reveals = [].slice.call(document.querySelectorAll(".reveal"));
   reveals.forEach(function (el, i) { el.style.zIndex = String(i + 1); });
   var closing = document.querySelector(".closing");
-  var propsSection = document.getElementById("propiedades");
   var track = document.querySelector("[data-props-track]");
   var ticking = false;
 
-  function relayout() { schedule(); }
+  /* Carrusel automático: duplica las tarjetas visibles y las hace correr
+     en bucle continuo (corre solo, no depende del scroll). Con "movimiento
+     reducido" queda como carrusel que se desliza con el dedo. */
+  function clearClones() {
+    if (track) track.querySelectorAll("[data-clone]").forEach(function (n) { n.remove(); });
+  }
+  function configCarousel() {
+    if (!track) return;
+    clearClones();
+    track.classList.remove("is-marquee");
+    track.style.animationDuration = "";
+    if (reducedQuery.matches) return; // fallback: swipe (CSS)
+    var originals = [].slice.call(track.children).filter(function (c) { return c.style.display !== "none"; });
+    if (!originals.length) return;
+    // clon del set para que el bucle sea continuo y sin salto
+    originals.forEach(function (c) {
+      var cl = c.cloneNode(true);
+      cl.setAttribute("aria-hidden", "true");
+      cl.setAttribute("data-clone", "");
+      cl.querySelectorAll("a,button").forEach(function (el) { el.tabIndex = -1; });
+      if (cl.tagName === "A") cl.tabIndex = -1;
+      track.appendChild(cl);
+    });
+    // velocidad constante → duración según el ancho de un set
+    var mr = 26, oneSet = 0;
+    originals.forEach(function (c) { oneSet += c.getBoundingClientRect().width + mr; });
+    var speed = window.innerWidth <= 980 ? 72 : 88; // px por segundo
+    track.style.animationDuration = Math.max(10, oneSet / speed).toFixed(1) + "s";
+    track.classList.add("is-marquee");
+  }
+  function relayout() { configCarousel(); }
 
   /* Entrada de secciones: activa .in cuando el bloque entra en pantalla.
      Mejora progresiva: sólo con JS, y el contenido nunca se oculta. */
@@ -184,20 +213,7 @@
       }
     }
 
-    // Carrusel: se desliza solo de der→izq a medida que la sección pasa por
-    // pantalla (sin frenar el scroll). En compu y en celular. Sólo se desactiva
-    // con "movimiento reducido".
-    if (propsSection && track) {
-      if (reduced) {
-        track.style.transform = "";
-      } else {
-        var r = propsSection.getBoundingClientRect();
-        // 0 cuando la sección entra por abajo, 1 cuando termina de salir por arriba
-        var prog = clamp((vh - r.top) / (vh + r.height));
-        var travel = Math.max(0, track.scrollWidth - track.clientWidth);
-        track.style.transform = "translate3d(" + (-prog * travel).toFixed(1) + "px,0,0)";
-      }
-    }
+    // (El carrusel corre solo con animación CSS; ver configCarousel.)
 
     // Cierre: formación blanco → cielo → ciudad → plano oscuro
     if (closing) {
@@ -214,10 +230,13 @@
   }
   function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
+  function tick() { configCarousel(); schedule(); }
+  var resizeT;
   window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", schedule);
-  reducedQuery.addEventListener("change", schedule);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
-  window.addEventListener("load", schedule);
+  window.addEventListener("resize", function () { clearTimeout(resizeT); resizeT = setTimeout(tick, 150); });
+  reducedQuery.addEventListener("change", tick);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(tick);
+  window.addEventListener("load", tick);
+  configCarousel();
   schedule();
 })();
