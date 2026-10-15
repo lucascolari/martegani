@@ -134,6 +134,12 @@
   document.querySelectorAll("[name=quiero],[name=ciudad-wa]").forEach(function (el) {
     el.addEventListener("change", buildWhats);
   });
+  // Botón flotante de WhatsApp
+  var waFloat = document.querySelector("[data-whatsapp-float]");
+  if (waFloat) {
+    waFloat.setAttribute("href", "https://wa.me/" + WA_NUMBER +
+      "?text=" + encodeURIComponent("Hola Martegani, quería hacer una consulta."));
+  }
 
   /* =======================================================
      MOVIMIENTO — un único coordinador por scroll (rAF)
